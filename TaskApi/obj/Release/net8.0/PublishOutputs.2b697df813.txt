@@ -1,0 +1,12 @@
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/TaskApi
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/appsettings.Development.json
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/appsettings.json
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/TaskApi.dll
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/TaskApi.deps.json
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/TaskApi.runtimeconfig.json
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/TaskApi.pdb
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/Microsoft.AspNetCore.OpenApi.dll
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/Microsoft.OpenApi.dll
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.Swagger.dll
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/amoghms/Desktop/FullStackProject/TaskApi/bin/Release/net8.0/publish/Swashbuckle.AspNetCore.SwaggerUI.dll
