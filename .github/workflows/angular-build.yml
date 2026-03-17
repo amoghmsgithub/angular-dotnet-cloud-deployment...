@@ -1,4 +1,4 @@
-name: Angular Build for IIS
+name: Fullstack Build (Angular + .NET)
 
 on:
   push:
@@ -6,7 +6,8 @@ on:
       - main
 
 jobs:
-  build:
+
+  frontend:
     runs-on: ubuntu-latest
 
     defaults:
@@ -28,8 +29,30 @@ jobs:
       - name: Build Angular App
         run: npm run build -- --configuration production
 
-      - name: Upload Artifact
+      - name: Upload Frontend Artifact
         uses: actions/upload-artifact@v4
         with:
           name: angular-build
           path: task-frontend/dist
+
+
+  backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+
+      - name: Publish .NET App
+        run: dotnet publish TaskApi -c Release -o publish
+
+      - name: Upload Backend Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-build
+          path: publish/
