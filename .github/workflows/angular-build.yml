@@ -36,7 +36,7 @@ jobs:
           path: task-frontend/dist
 
 
-  backend:
+   backend:
     runs-on: ubuntu-latest
 
     steps:
@@ -49,16 +49,16 @@ jobs:
           dotnet-version: 8.0.x
 
       - name: Clean
-        run: dotnet clean ./TaskApi/TaskApi.csproj
+        run: rm -rf TaskApi/obj TaskApi/bin
 
       - name: Restore
-        run: dotnet restore ./TaskApi/TaskApi.csproj
+        run: dotnet restore TaskApi/TaskApi.csproj
 
       - name: Build
-        run: dotnet build ./TaskApi/TaskApi.csproj --configuration Release --no-restore
+        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore
 
       - name: Publish
-        run: dotnet publish ./TaskApi/TaskApi.csproj -c Release -o publish
+        run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish
 
       - name: Upload Backend Artifact
         uses: actions/upload-artifact@v4
