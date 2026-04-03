@@ -35,32 +35,33 @@ jobs:
           name: angular-build
           path: task-frontend/dist
 
-backend:
-  runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+  backend:
+    runs-on: ubuntu-latest
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 8.0.x
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
 
-    - name: Clean
-      run: dotnet clean ./TaskApi/TaskApi.csproj
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
 
-    - name: Restore
-      run: dotnet restore ./TaskApi/TaskApi.csproj
+      - name: Clean
+        run: dotnet clean ./TaskApi/TaskApi.csproj
 
-    - name: Build
-      run: dotnet build ./TaskApi/TaskApi.csproj --configuration Release --no-restore
+      - name: Restore
+        run: dotnet restore ./TaskApi/TaskApi.csproj
 
-    - name: Publish
-      run: dotnet publish ./TaskApi/TaskApi.csproj -c Release -o publish
+      - name: Build
+        run: dotnet build ./TaskApi/TaskApi.csproj --configuration Release --no-restore
 
-    - name: Upload Backend Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: backend-build
-        path: publish/
+      - name: Publish
+        run: dotnet publish ./TaskApi/TaskApi.csproj -c Release -o publish
+
+      - name: Upload Backend Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-build
+          path: publish/
