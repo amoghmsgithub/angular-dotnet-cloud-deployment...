@@ -11,7 +11,7 @@ This project is a **full-stack enterprise-grade application** built using Angula
 The system demonstrates **end-to-end development, deployment, and DevOps integration**, focusing on scalability, reliability, and automation.
 
 ---
-
+-
 ## 🏗️ System Architecture
 
 - Angular frontend (component-based UI)
