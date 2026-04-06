@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4   # 🔥 UPDATED
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4   # 🔥 UPDATED
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
@@ -41,21 +41,28 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4   # 🔥 UPDATED
+        uses: actions/checkout@v4
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4   # 🔥 UPDATED
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
 
+      # 🔥 CLEAN EVERYTHING (fixes your error)
+      - name: Clean project
+        run: dotnet clean TaskApi/TaskApi.csproj
+
+      # 🔥 RESTORE PROPERLY
       - name: Restore
         run: dotnet restore TaskApi/TaskApi.csproj
 
+      # 🔥 BUILD WITHOUT SKIPPING
       - name: Build
-        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore
+        run: dotnet build TaskApi/TaskApi.csproj --configuration Release
 
+      # 🔥 PUBLISH
       - name: Publish
-        run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish --no-build
+        run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish
 
       - name: Upload Backend Artifact
         uses: actions/upload-artifact@v4
