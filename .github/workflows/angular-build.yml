@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: angular-build
-          path: task-frontend/dist
+          path: task-frontend/dist/task-frontend
 
 
   backend:
@@ -48,9 +48,6 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      - name: Clean
-        run: rm -rf TaskApi/obj TaskApi/bin
-
       - name: Restore
         run: dotnet restore TaskApi/TaskApi.csproj
 
@@ -64,4 +61,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: backend-build
-          path: publish/
+          path: publish
