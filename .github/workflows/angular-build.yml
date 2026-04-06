@@ -48,20 +48,17 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      # 🔥 CLEAN EVERYTHING (fixes your error)
-      - name: Clean project
-        run: dotnet clean TaskApi/TaskApi.csproj
+      # 🔥 HARD CLEAN (THIS FIXES YOUR ERROR)
+      - name: Remove bin & obj folders
+        run: rm -rf TaskApi/bin TaskApi/obj
 
-      # 🔥 RESTORE PROPERLY
-      - name: Restore
+      - name: Restore Dependencies
         run: dotnet restore TaskApi/TaskApi.csproj
 
-      # 🔥 BUILD WITHOUT SKIPPING
-      - name: Build
+      - name: Build Project
         run: dotnet build TaskApi/TaskApi.csproj --configuration Release
 
-      # 🔥 PUBLISH
-      - name: Publish
+      - name: Publish Project
         run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish
 
       - name: Upload Backend Artifact
