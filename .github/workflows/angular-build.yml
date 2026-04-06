@@ -43,18 +43,29 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup .NET
+      # 🔥 DEBUG: Show folder structure
+      - name: Show Project Structure
+        run: ls -R
+
+      - name: Setup .NET (all versions safe)
         uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: |
+            6.0.x
+            7.0.x
+            8.0.x
 
-      - name: Restore
+      - name: Show .NET Info
+        run: dotnet --info
+
+      - name: Restore Dependencies
         run: dotnet restore TaskApi/TaskApi.csproj
 
-      - name: Build
-        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore
+      # 🔥 IMPORTANT: detailed logs
+      - name: Build Project (detailed logs)
+        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore --verbosity detailed
 
-      - name: Publish
+      - name: Publish Project
         run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish --no-build
 
       - name: Upload Backend Artifact
