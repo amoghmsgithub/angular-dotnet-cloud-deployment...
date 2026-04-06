@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
@@ -33,7 +33,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: angular-build
-          path: task-frontend/dist/task-frontend
+          path: task-frontend/dist
 
 
   backend:
@@ -41,30 +41,18 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
 
-      # 🔥 FORCE CLEAN NUGET STATE (KEY FIX)
-      - name: Clear NuGet cache
-        run: dotnet nuget locals all --clear
-
-      # 🔥 FORCE PROPER RESTORE (GENERATES obj/*.props)
-      - name: Restore Dependencies (force)
-        run: dotnet restore TaskApi/TaskApi.csproj --force --no-cache
-
-      # 🔥 BUILD USING RESTORED STATE
-      - name: Build Project
-        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore
-
-      - name: Publish Project
-        run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish --no-build
+      - name: Publish .NET App
+        run: dotnet publish TaskApi -c Release -o publish
 
       - name: Upload Backend Artifact
         uses: actions/upload-artifact@v4
         with:
           name: backend-build
-          path: publish
+          path: publish/
