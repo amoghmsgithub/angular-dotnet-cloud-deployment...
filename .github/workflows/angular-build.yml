@@ -16,10 +16,10 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # 🔥 UPDATED
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4   # 🔥 UPDATED
         with:
           node-version: 18
 
@@ -41,31 +41,20 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4   # 🔥 UPDATED
 
-      # 🔥 DEBUG: Show folder structure
-      - name: Show Project Structure
-        run: ls -R
-
-      - name: Setup .NET (all versions safe)
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4   # 🔥 UPDATED
         with:
-          dotnet-version: |
-            6.0.x
-            7.0.x
-            8.0.x
+          dotnet-version: 8.0.x
 
-      - name: Show .NET Info
-        run: dotnet --info
-
-      - name: Restore Dependencies
+      - name: Restore
         run: dotnet restore TaskApi/TaskApi.csproj
 
-      # 🔥 IMPORTANT: detailed logs
-      - name: Build Project (detailed logs)
-        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore --verbosity detailed
+      - name: Build
+        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore
 
-      - name: Publish Project
+      - name: Publish
         run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish --no-build
 
       - name: Upload Backend Artifact
