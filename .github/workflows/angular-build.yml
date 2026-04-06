@@ -48,13 +48,13 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
-      - name: Restore
-        run: dotnet restore TaskApi/TaskApi.csproj
+      - name: Restore Solution
+        run: dotnet restore FullStackProject.sln
 
-      - name: Build
-        run: dotnet build TaskApi/TaskApi.csproj --configuration Release --no-restore
+      - name: Build Solution
+        run: dotnet build FullStackProject.sln --configuration Release --no-restore
 
-      - name: Publish
+      - name: Publish API
         run: dotnet publish TaskApi/TaskApi.csproj -c Release -o publish
 
       - name: Upload Backend Artifact
