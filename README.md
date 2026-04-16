@@ -1,6 +1,6 @@
 # ☁️ Full-Stack Angular + .NET Cloud Deployment Platform
 
-> Production-grade full-stack application deployed on AWS with automated CI/CD pipelines
+> Production-grade full-stack application deployed Microsoft azure with automated CI/CD pipelines
 
 ---
 
