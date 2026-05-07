@@ -47,7 +47,7 @@ The system demonstrates **end-to-end development, deployment, and DevOps integra
 ---
 
 ### ☁️ Cloud Deployment (AWS)
-- Provisioned and managed **AWS EC2 instances**  
+- Provisioned and managed *AWS EC2 instances*
 - Hosted production-ready application  
 - Configured scalable deployment environment  
 
